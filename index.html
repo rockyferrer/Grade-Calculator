@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>UofT Grade Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/grade-calc.css" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<img class="img-responsive" src="uoft_logo.png" alt="University of Toronto" width="300" height="90">
+			<h1 id="title"><b>UofT Current Grade Calculator</b></h1>
+		</div>
+		<h4>Enter your grades and corresponding weights below</h4>
+
+
+		<div class="row">
+			<div class="col-md-6"></div>
+			<div class="col-md-3">
+
+				<div id="entries">
+					<p><button id="addRowBtn">Add Row</button> Number of entries:
+						<select id="numRows">
+							<option selected>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+							<option>11</option>
+							<option>12</option>
+							<option>13</option>
+							<option>14</option>
+							<option>15</option>
+							<option>16</option>
+							<option>17</option>
+							<option>18</option>
+							<option>19</option>
+							<option>20</option>
+						</select>
+					</p>
+				</div>
+
+			</div>
+			<div class="col-md-3"></div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Description</th>
+							<th>Weight</th>
+							<th>Grade</th>
+						</tr>
+					</thead>
+					<tbody id="entriesList">
+						<tr>
+							<td><input class="Description" type="text" size="15" maxlength="15" /></td>
+							<td><input class="Weight" type="text" size="4" maxlength="3" /></td>
+							<td><input class="Grade" type="text" size="4" maxlength="3" /></td>
+						</tr>
+						<tr>
+							<td><input class="Description" type="text" size="15" maxlength="15" /></td>
+							<td><input class="Weight" type="text" size="4" maxlength="3" /></td>
+							<td><input class="Grade" type="text" size="4" maxlength="3" /></td>
+						</tr>
+						<tr>
+							<td><input class="Description" type="text" size="15" maxlength="15" /></td>
+							<td><input class="Weight" type="text" size="4" maxlength="3" /></td>
+							<td><input class="Grade" type="text" size="4" maxlength="3" /></td>
+						</tr>
+						<tr>
+							<td><input class="Description" type="text" size="15" maxlength="15" /></td>
+							<td><input class="Weight" type="text" size="4" maxlength="3" /></td>
+							<td><input class="Grade" type="text" size="4" maxlength="3" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+
+	<div id="submitButton">
+		<button type="button" onclick="return outputMessage();">Submit</button>
+		<button id="clearButton" type="button">Clear</button>
+	</div>
+	<div id="result" class="validResult"></div>
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/grade-calc.js"></script>
+</body>
+
+</html>
