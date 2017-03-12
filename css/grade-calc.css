@@ -1,3 +1,8 @@
+body {
+	background-color: rgb(185, 179, 175);
+	padding-bottom: 70px;
+}
+
 h1, h4 {
 	text-align: center;
 	font-family: Arial; }
@@ -8,9 +13,9 @@ ol {
     text-align: center; }
 
 #submitButton, #result {
-	text-align: center; 
+	text-align: center;
 	color: #5a514c; }
-
+/*
 #numRows {
 	position: absolute;
     transition: .5s ease;
@@ -23,13 +28,13 @@ ol {
     transition: .5s ease;
     top: 16.5%;
     left: 60.5%;
-}
+}*/
 
 #emptyGradeField, #emptyWeightField {
     border: 1px solid #ff2d2d;
 }
 
 #errorMessage {
-    text-align: center; 
+    text-align: center;
     color: #ff2d2d;
 }

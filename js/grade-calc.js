@@ -1,7 +1,6 @@
 // array to store the grades entered by the user
 var grades;
 
-
 //array to store the weights entered by the user
 //grades and weights are parallel
 var weights;
@@ -109,7 +108,7 @@ function createWeightInput() {
 	//set the attributes
 	newWeightInput.className = "Weight";
 	newWeightInput.type = "text";
-	newWeightInput.size = "8";
+	newWeightInput.size = "4";
 	newWeightInput.maxLength = "3";
 	return newWeightInput;
 }
@@ -120,7 +119,7 @@ function createGradeInput() {
 	//set the attributes
 	newGradeInput.className = "Grade";
 	newGradeInput.type = "text";
-	newGradeInput.size = "8";
+	newGradeInput.size = "4";
 	newGradeInput.maxLength = "3";
 	return newGradeInput;
 }
@@ -148,9 +147,26 @@ function createNewRow() {
 	return newListEl;
 }
 
+function createNewTableRow() {
+	var newTableEl = document.createElement('tr');
+	var newTdDescEl = document.createElement('td');
+	var newDescInputEl = createDescInput();
+	newTdDescEl.appendChild(newDescInputEl);
+	var newTdWeightEl = document.createElement('td');
+	var newWeightInputEl = createWeightInput();
+	newTdWeightEl.appendChild(newWeightInputEl);
+	var newTdGradeEl = document.createElement('td');
+	var newGradeInputEl = createGradeInput();
+	newTdGradeEl.appendChild(newGradeInputEl);
+	newTableEl.appendChild(newTdDescEl);
+	newTableEl.appendChild(newTdWeightEl);
+	newTableEl.appendChild(newTdGradeEl);
+	return newTableEl;
+}
+
 /* add a single row to the DOM */
 function addSingleRow() {
-	var newListEl = createNewRow();
+	var newListEl = createNewTableRow();
 	var position = document.getElementById('entriesList');
 	position.appendChild(newListEl);
 }
@@ -163,30 +179,32 @@ function addRow() {
 	return false;
 }
 
+var addRowBtn = document.getElementById('addRowBtn');
+addRowBtn.onclick = addRow;
+
 //the previous number of rows before the numRows drop down menu was changed
 //default is set to 4
-var prevNumRows;
+var curNumRows = 4;
 
 /* sets up the rows when the number of entries menu is changed */
 function setUpRows() {
-	//clear the current rows
-	var el = document.getElementById('entriesList');
-
 	//determine the number of rows the page should have
 	var rowsToAdd = parseInt(this.value);
 
 	//add the rows
-	if (prevNumRows < rowsToAdd) { //add rows
-		for (var i = prevNumRows; i < rowsToAdd; i++) {
+	if (curNumRows < rowsToAdd) { //add rows
+		for (var i = curNumRows; i < rowsToAdd; i++) {
 			addSingleRow();
+			curNumRows = rowsToAdd;
 		}
-	} else if (prevNumRows > rowsToAdd) { //remove rows
+	} else if (curNumRows > rowsToAdd) { //remove rows
 		var entriesList = document.getElementById('entriesList');
-		for (var i = prevNumRows; i > rowsToAdd; i--) {
+		for (var i = curNumRows; i > rowsToAdd; i--) {
 			entriesList.removeChild(entriesList.lastChild);
+			curNumRows = rowsToAdd;
 		}
 	}
-	prevNumRows = rowsToAdd;
+
 }
 
 //add an event handler to the drop down menu for whenever the value changes
@@ -219,13 +237,13 @@ function highlightRequiredField(gradeField, weightField) {
 	}
 }
 
-/* checks if one of the first are empty */
+/* checks if one of the fields are empty */
 function isOneFieldMissing(field1, field2) {
 	return ((isNaN(field1) && !isNaN(field2)) ||
 		(!isNaN(field1) && isNaN(field2)));
 }
 
-/* sets all the empty fields back to grade and weight resptively */
+/* sets all the empty fields back to grade and weight respectively */
 function resetIDs() {
 	//sets the empty grade field back to 'Grade'
 	var emptyGradeElement = document.getElementById('emptyGradeField');
