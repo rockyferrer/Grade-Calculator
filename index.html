@@ -12,10 +12,17 @@
 </head>
 
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<img class="img-responsive" src="uoft_logo.png" alt="University of Toronto" width="300" height="90">
-			<h1 id="title"><b>UofT Current Grade Calculator</b></h1>
+			<div class="col-md-2">
+				<img class="img-responsive logo" src="uoft_logo.png" alt="University of Toronto" width="300" height="90">
+			</div>
+			<div class="col-md-8">
+				<h1 id="title"><b>UofT Current Grade Calculator</b></h1>
+			</div>
+			<div class="col-md-2">
+				<img class="img-responsive logo" src="uoft_logo.png" alt="University of Toronto" width="300" height="90">
+			</div>
 		</div>
 		<h4>Enter your grades and corresponding weights below</h4>
 
@@ -93,7 +100,7 @@
 	</div>
 
 	<div id="submitButton">
-		<button type="button" onclick="return outputMessage();">Submit</button>
+		<button id="submit" type="button">Submit</button>
 		<button id="clearButton" type="button">Clear</button>
 	</div>
 	<div id="result" class="validResult"></div>
