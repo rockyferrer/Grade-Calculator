@@ -91,7 +91,7 @@ $(document).ready(function() {
         return false;
     }
     var submitButton = document.getElementById('submit');
-    resultEl.onclick = outputMessage;
+    submitButton.onclick = outputMessage;
 
     /* creates an input element for the description of an entry */
     function createDescInput() {
