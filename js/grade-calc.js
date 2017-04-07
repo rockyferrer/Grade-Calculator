@@ -32,12 +32,12 @@ $(document).ready(function() {
         };
 
         //running totals of the grades and weights
-        var curTotalGrade = 0
+        var curTotalGrade = 0;
         var curTotalWeight = 0;
         for (var i = 0; i < grades.length; i++) {
             //convert grades and weights into ints for calculations
             var grade = parseGrade(grades[i].value);
-            var weight = parseInt(weights[i].value);
+            var weight = parseFloat(weights[i].value);
             //checks to make sure that both a weight and a grade has been entered in the same row
             if (!isNaN(grade) && !isNaN(weight)) {
                 //turn the weight into a decimal out of 100, then multiple by grade
@@ -65,12 +65,14 @@ $(document).ready(function() {
     function parseGrade(grade) {
         var divideIndex = grade.indexOf('/');
         if (divideIndex > -1) {
-            var numerator = parseInt(grade.substring(0, divideIndex));
-            var denominator = parseInt(grade.substring(divideIndex+1, grade.length));
+            var numerator = parseFloat(grade.substring(0, divideIndex));
+            console.log(numerator);
+            var denominator = parseFloat(grade.substring(divideIndex+1, grade.length));
+            console.log(denominator);
 
             return ((numerator / denominator) * 100).toFixed(2);
         } else {
-            return parseInt(grade);
+            return parseFloat(grade);
         }
     }
 
