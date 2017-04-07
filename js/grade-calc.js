@@ -36,7 +36,7 @@ $(document).ready(function() {
         var curTotalWeight = 0;
         for (var i = 0; i < grades.length; i++) {
             //convert grades and weights into ints for calculations
-            var grade = parseInt(grades[i].value);
+            var grade = parseGrade(grades[i].value);
             var weight = parseInt(weights[i].value);
             //checks to make sure that both a weight and a grade has been entered in the same row
             if (!isNaN(grade) && !isNaN(weight)) {
@@ -61,6 +61,19 @@ $(document).ready(function() {
 
         return finalGrade;
     }
+
+    function parseGrade(grade) {
+        var divideIndex = grade.indexOf('/');
+        if (divideIndex > -1) {
+            var numerator = parseInt(grade.substring(0, divideIndex));
+            var denominator = parseInt(grade.substring(divideIndex+1, grade.length));
+
+            return ((numerator / denominator) * 100).toFixed(2);
+        } else {
+            return parseInt(grade);
+        }
+    }
+
 
     function outputMessage() {
         //reset the outputMessage element back to result
@@ -99,8 +112,8 @@ $(document).ready(function() {
         //set the attributes
         newDescInput.className = "Description";
         newDescInput.type = "text";
-        newDescInput.size = "15";
-        newDescInput.maxLength = "15";
+        newDescInput.size = "30";
+        newDescInput.maxLength = "30";
         return newDescInput;
     }
 
@@ -121,8 +134,8 @@ $(document).ready(function() {
         //set the attributes
         newGradeInput.className = "Grade";
         newGradeInput.type = "text";
-        newGradeInput.size = "4";
-        newGradeInput.maxLength = "3";
+        newGradeInput.size = "9";
+        newGradeInput.maxLength = "8";
         return newGradeInput;
     }
 
