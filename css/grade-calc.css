@@ -14,7 +14,8 @@ ol {
 
 #submitButton, #result {
 	text-align: center;
-	color: #5a514c; }
+	color: #5a514c;
+}
 
 #emptyGradeField, #emptyWeightField {
     border: 1px solid #ff2d2d;
