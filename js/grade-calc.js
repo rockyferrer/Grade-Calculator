@@ -17,6 +17,7 @@ $(document).ready(function() {
         weights = document.getElementsByClassName('Weight');
     }
 
+    var finalGradeString;
     /* Calculates the grade based on the weights and grades */
     function calculateGrade() {
         resetIDs(); //this sets every input id back to "Grade" and "Weight" respectively
@@ -57,6 +58,7 @@ $(document).ready(function() {
 
         //the loop has completed, so we have valid totals for grade and weight
         //calculate
+        finalGradeString = curTotalGrade.toFixed(2) + '/' + curTotalWeight.toFixed(2);
         finalGrade = ((curTotalGrade / curTotalWeight) * 100).toFixed(2);
 
         return finalGrade;
@@ -66,10 +68,7 @@ $(document).ready(function() {
         var divideIndex = grade.indexOf('/');
         if (divideIndex > -1) {
             var numerator = parseFloat(grade.substring(0, divideIndex));
-            console.log(numerator);
             var denominator = parseFloat(grade.substring(divideIndex+1, grade.length));
-            console.log(denominator);
-
             return ((numerator / denominator) * 100).toFixed(2);
         } else {
             return parseFloat(grade);
@@ -99,7 +98,7 @@ $(document).ready(function() {
             result.textContent = outputMessage;
         } else { //return the final grade
             result.id = 'result';
-            var msg = "Your current grade is ";
+            var msg = "You currently have a " + finalGradeString + ' = ';
             var outputMessage = msg + finalGrade + "%.";
             result.textContent = outputMessage;
         }
@@ -142,7 +141,7 @@ $(document).ready(function() {
     }
 
     /* creates a new row with the description element, weight element, and grade
-    element*/
+    element */
     function createNewRow() {
         var newListEl = document.createElement('li');
         var newFormEl = document.createElement('form');
@@ -276,7 +275,6 @@ $(document).ready(function() {
     /* checks if no entries have been entered in any of the rows */
     function isNoEntries() {
         var counter = 0;
-
         //loop the increments counter for every empty row
         for (var i = 0; i < grades.length; i++) {
             if ((isNaN(parseInt(grades[i].value))) &&
@@ -284,8 +282,6 @@ $(document).ready(function() {
                 counter++;
             }
         }
-
         return counter === grades.length;
     }
-
 });
