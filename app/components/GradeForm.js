@@ -5,7 +5,9 @@ import GradeEntry from 'GradeEntry';
 export default class GradeForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {numEntries: 4};
+        this.state = {
+            numEntries: 2
+        };
     }
 
     handleSubmit(e) {
@@ -24,7 +26,12 @@ export default class GradeForm extends Component {
         var renderEntries = () => {
             let allEntries = [];
             for (let i = 0; i < this.state.numEntries; i++) {
-                allEntries.push(<GradeEntry key={i}/>);
+                allEntries.push(
+                    <div key={i}>
+                        <input type="text" ref="grade" placeholder="Enter grade..."/>
+                        <input type="text" ref="weight" placeholder="Enter weight..."/>
+                    </div>
+                );
             }
             return allEntries;
         }
