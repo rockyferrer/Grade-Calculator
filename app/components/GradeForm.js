@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 
+//TODO: error checking
+// make sure entries are numbers
+// make sure rows are full
 export default class GradeForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {numEntries: 4};
+        this.state = {numEntries: 3};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
