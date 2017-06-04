@@ -10,7 +10,6 @@ export default class Grade extends Component {
             formSubmitted: false,
             gradeNumber: 0.0,
             gradeString: ''
-
         };
         this.handleGradeCalculation = this.handleGradeCalculation.bind(this);
     }
@@ -28,7 +27,6 @@ export default class Grade extends Component {
                     //Send message to GradeMessage
                 }
         }
-
         //the loop has completed, so we have valid totals for grade and weight
         //calculate
         var finalGradeString = curTotalGrade.toFixed(2) + '/' + curTotalWeight.toFixed(2);
@@ -45,7 +43,6 @@ export default class Grade extends Component {
         var {gradeString, gradeNumber, formSubmitted} = this.state;
         return (
             <div>
-                <p>Grade Component</p>
                 <GradeForm onGradeSubmit={this.handleGradeCalculation} />
                 <GradeMessage showGrade={formSubmitted} gradeString={gradeString} gradeNumber={gradeNumber} />
             </div>

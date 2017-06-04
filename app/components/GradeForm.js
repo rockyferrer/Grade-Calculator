@@ -6,7 +6,9 @@ import React, {Component} from 'react';
 export default class GradeForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {numEntries: 3};
+        this.state = {
+            numEntries: 3
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -14,7 +16,7 @@ export default class GradeForm extends Component {
         var divideIndex = grade.indexOf('/');
         if (divideIndex > -1) {
             var numerator = parseFloat(grade.substring(0, divideIndex));
-            var denominator = parseFloat(grade.substring(divideIndex+1, grade.length));
+            var denominator = parseFloat(grade.substring(divideIndex + 1, grade.length));
             return ((numerator / denominator) * 100).toFixed(2);
         } else {
             return parseFloat(grade);
@@ -36,19 +38,34 @@ export default class GradeForm extends Component {
             let allEntries = [];
             for (let i = 0; i < this.state.numEntries; i++) {
                 allEntries.push(
-                    <div key={i}>
-                        <input type="text" className="grade" placeholder="Enter grade..." />
-                        <input type="text" className="weight" placeholder="Enter weight..." />
-                    </div>
+                    <tr>
+                        <td><input type="text" placeholder="Enter description..."/></td>
+                        <td><input type="text" className="grade" placeholder="Enter grade..."/></td>
+                        <td><input type="text" className="weight" placeholder="Enter weight..."/></td>
+                    </tr>
                 );
             }
             return allEntries;
         }
         return (
-            <form onSubmit={this.handleSubmit}>
-                {renderEntries()}
-                <button className="button">Submit</button>
-            </form>
-        )
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="900">Description</th>
+                                <th width="600">Grades</th>
+                                <th width="600">Weights</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {renderEntries()}
+                        </tbody>
+                    </table>
+                    <button className="button">Submit</button>
+                </form>
+                <button className="button">Clear</button>
+            </div>
+        );
     }
 }

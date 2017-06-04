@@ -7,9 +7,14 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                <p>Main Component</p>
                 <Header />
-                <Grade />
+                <div className="row">
+                    <div className="column small-centered small-11 medium-6 large-5">
+                        <div className="container">
+                            <Grade />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
