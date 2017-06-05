@@ -25,7 +25,6 @@ module.exports = {
         alias: {
             applicationStyles: 'app/styles/app.scss',
             Main: 'app/components/Main.js',
-            Header: 'app/components/Header.js',
             Grade: 'app/components/Grade.js',
             GradeForm: 'app/components/GradeForm.js',
             GradeMessage: 'app/components/GradeMessage.js'

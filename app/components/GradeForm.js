@@ -38,7 +38,7 @@ export default class GradeForm extends Component {
             let allEntries = [];
             for (let i = 0; i < this.state.numEntries; i++) {
                 allEntries.push(
-                    <tr>
+                    <tr key={i}>
                         <td><input type="text" placeholder="Enter description..."/></td>
                         <td><input type="text" className="grade" placeholder="Enter grade..."/></td>
                         <td><input type="text" className="weight" placeholder="Enter weight..."/></td>
@@ -53,9 +53,9 @@ export default class GradeForm extends Component {
                     <table>
                         <thead>
                             <tr>
-                                <th width="900">Description</th>
-                                <th width="600">Grades</th>
-                                <th width="600">Weights</th>
+                                <th width="900" className="table-header">Description</th>
+                                <th width="600" className="table-header">Grades</th>
+                                <th width="600" className="table-header">Weights</th>
                             </tr>
                         </thead>
                         <tbody>
