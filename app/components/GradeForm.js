@@ -33,13 +33,20 @@ export default class GradeForm extends Component {
         this.props.onGradeSubmit(grades, weights);
     }
 
+    clearEntries(e) {
+        e.preventDefault();
+        var descriptions = document.getElementsByClassName('descriptions');
+        var descriptions = document.getElementsByClassName('descriptions');
+        var descriptions = document.getElementsByClassName('descriptions');
+    }
+
     render() {
         var renderEntries = () => {
             let allEntries = [];
             for (let i = 0; i < this.state.numEntries; i++) {
                 allEntries.push(
                     <tr key={i}>
-                        <td><input type="text" placeholder="Enter description..."/></td>
+                        <td><input type="text" className="description" placeholder="Enter description..."/></td>
                         <td><input type="text" className="grade" placeholder="Enter grade..."/></td>
                         <td><input type="text" className="weight" placeholder="Enter weight..."/></td>
                     </tr>
@@ -48,7 +55,7 @@ export default class GradeForm extends Component {
             return allEntries;
         }
         return (
-            <div>
+            <div className="row">
                 <form onSubmit={this.handleSubmit}>
                     <table>
                         <thead>
@@ -62,9 +69,16 @@ export default class GradeForm extends Component {
                             {renderEntries()}
                         </tbody>
                     </table>
-                    <button className="button">Submit</button>
+
+                    <div className="column small-centered small-7 medium-7 large-7">
+                        <button className="button hollow expanded">Submit</button>
+                    </div>
+                    <div className="column"></div>
                 </form>
-                <button className="button">Clear</button>
+                <div className="column small-centered small-7 medium-7 large-7">
+                    <button className="button hollow expanded" onClick={this.clearEntries}>Clear</button>
+                </div>
+                <div className="column"></div>
             </div>
         );
     }
