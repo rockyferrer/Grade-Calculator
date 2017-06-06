@@ -9,10 +9,11 @@ export default class GradeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            numEntries: 3
+            numRows: 0
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeRows = this.handleChangeRows.bind(this);
+        this.clearEntries = this.clearEntries.bind(this);
     }
 
     parseGrade(grade) {
@@ -37,22 +38,26 @@ export default class GradeForm extends Component {
     }
 
     handleChangeRows(numRows) {
-        this.setState({
-            numEntries: numRows
-        });
+        this.setState({numRows});
     }
 
     clearEntries(e) {
         e.preventDefault();
-        var descriptions = document.getElementsByClassName('descriptions');
-        var grades = document.getElementsByClassName('grades');
-        var weights = document.getElementsByClassName('weights');
+        var descriptions = document.getElementsByClassName('description');
+        var grades = document.getElementsByClassName('grade');
+        var weights = document.getElementsByClassName('weight');
+        for (let i = 0; i < descriptions.length; i++) {
+            //clear values
+            descriptions[i].value = '';
+            grades[i].value = '';
+            weights[i].value = '';
+        }
     }
 
     render() {
         var renderEntries = () => {
             let allEntries = [];
-            for (let i = 0; i < this.state.numEntries; i++) {
+            for (let i = 0; i < this.state.numRows; i++) {
                 allEntries.push(
                     <tr key={i}>
                         <td><input type="text" className="description" placeholder="Enter description..."/></td>
@@ -65,7 +70,7 @@ export default class GradeForm extends Component {
         }
         return (
             <div className="row">
-                <AddEntry onRowsChange={this.handleChangeRows}/>
+                <AddEntry onSetRows={this.handleChangeRows}/>
                 <form onSubmit={this.handleSubmit}>
                     <table>
                         <thead>

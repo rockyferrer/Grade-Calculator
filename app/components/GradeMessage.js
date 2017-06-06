@@ -10,7 +10,9 @@ export default class GradeMessage extends Component {
         var renderMessage = () => {
             if (showGrade) {
                 return (
-                    <p>You currently have a {gradeString} = {gradeNumber}%</p>
+                    <p className="text-center">
+                        You currently have a {gradeString} = {gradeNumber}%
+                    </p>
                 );
             } else {
                 return null;
