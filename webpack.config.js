@@ -27,7 +27,8 @@ module.exports = {
             Main: 'app/components/Main.js',
             Grade: 'app/components/Grade.js',
             GradeForm: 'app/components/GradeForm.js',
-            GradeMessage: 'app/components/GradeMessage.js'
+            GradeMessage: 'app/components/GradeMessage.js',
+            AddEntry: 'app/components/AddEntry.js'
         },
         extensions: ['', '.js', '.jsx']
     },

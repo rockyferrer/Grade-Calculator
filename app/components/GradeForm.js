@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import AddEntry from 'AddEntry';
+
 //TODO: error checking
 // make sure entries are numbers
 // make sure rows are full
@@ -10,6 +12,7 @@ export default class GradeForm extends Component {
             numEntries: 3
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChangeRows = this.handleChangeRows.bind(this);
     }
 
     parseGrade(grade) {
@@ -33,11 +36,17 @@ export default class GradeForm extends Component {
         this.props.onGradeSubmit(grades, weights);
     }
 
+    handleChangeRows(numRows) {
+        this.setState({
+            numEntries: numRows
+        });
+    }
+
     clearEntries(e) {
         e.preventDefault();
         var descriptions = document.getElementsByClassName('descriptions');
-        var descriptions = document.getElementsByClassName('descriptions');
-        var descriptions = document.getElementsByClassName('descriptions');
+        var grades = document.getElementsByClassName('grades');
+        var weights = document.getElementsByClassName('weights');
     }
 
     render() {
@@ -47,8 +56,8 @@ export default class GradeForm extends Component {
                 allEntries.push(
                     <tr key={i}>
                         <td><input type="text" className="description" placeholder="Enter description..."/></td>
-                        <td><input type="text" className="grade" placeholder="Enter grade..."/></td>
-                        <td><input type="text" className="weight" placeholder="Enter weight..."/></td>
+                        <td><input type="number" className="grade" placeholder="Enter grade..."/></td>
+                        <td><input type="number" className="weight" placeholder="Enter weight..."/></td>
                     </tr>
                 );
             }
@@ -56,6 +65,7 @@ export default class GradeForm extends Component {
         }
         return (
             <div className="row">
+                <AddEntry onRowsChange={this.handleChangeRows}/>
                 <form onSubmit={this.handleSubmit}>
                     <table>
                         <thead>
