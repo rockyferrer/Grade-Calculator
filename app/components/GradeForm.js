@@ -23,7 +23,7 @@ export default class GradeForm extends Component {
             var denominator = parseFloat(grade.substring(divideIndex + 1, grade.length));
             return ((numerator / denominator) * 100).toFixed(2);
         } else {
-            return parseFloat(grade);
+            return parseFloat(grade).toFixed(2);
         }
     }
 
@@ -41,8 +41,8 @@ export default class GradeForm extends Component {
         this.setState({numRows});
     }
 
-    clearEntries(e) {
-        e.preventDefault();
+    clearEntries() {
+        // e.preventDefault();
         var descriptions = document.getElementsByClassName('description');
         var grades = document.getElementsByClassName('grade');
         var weights = document.getElementsByClassName('weight');
@@ -52,6 +52,9 @@ export default class GradeForm extends Component {
             grades[i].value = '';
             weights[i].value = '';
         }
+        console.log(descriptions[2].value);
+        console.log(grades[2].value);
+        console.log(weights[2].value);
     }
 
     render() {
@@ -61,7 +64,7 @@ export default class GradeForm extends Component {
                 allEntries.push(
                     <tr key={i}>
                         <td><input type="text" className="description" placeholder="Enter description..."/></td>
-                        <td><input type="number" className="grade" placeholder="Enter grade..."/></td>
+                        <td><input type="text" className="grade" placeholder="Enter grade..."/></td>
                         <td><input type="number" className="weight" placeholder="Enter weight..."/></td>
                     </tr>
                 );
